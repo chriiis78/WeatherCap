@@ -12,7 +12,7 @@ typealias SaveCitiesResponseHandler = (_ response: DataModel.SaveCities.Response
 
 class DataWorker {
 
-    let userDefaults : UserDefaults
+    let userDefaults: UserDefaults
 
     init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults

@@ -82,6 +82,7 @@ class AddCityViewController: UITableViewController, AddCityDisplayLogic {
 
     func displayCities(viewModel: AddCity.FetchCities.ViewModel) {
         self.listCities = viewModel.cities
+        tableView.reloadData()
     }
 
     // MARK: TableView

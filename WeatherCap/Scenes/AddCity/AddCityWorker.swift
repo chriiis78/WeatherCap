@@ -12,15 +12,18 @@ import MapKit
 typealias FetchCitiesResponseHandler = (_ response: AddCity.FetchCities.Response) -> Void
 
 class AddCityWorker {
-    func fetchCities(request: AddCity.FetchCities.Request, success: @escaping(FetchCitiesResponseHandler), fail: @escaping(FetchCitiesResponseHandler)) {
+    func fetchCities(request: AddCity.FetchCities.Request,
+                     success: @escaping(FetchCitiesResponseHandler),
+                     fail: @escaping(FetchCitiesResponseHandler)) {
         let mapMequest = MKLocalSearch.Request()
         mapMequest.naturalLanguageQuery = request.name
         let localSearch = MKLocalSearch(request: mapMequest)
         localSearch.start { (searchResponse, _) in
             guard let items = searchResponse?.mapItems else {
+                fail(AddCity.FetchCities.Response(errorDescription: "Fetch Cities no item"))
                 return
             }
-            
+
             var listCities: [String] = []
             for city in items {
                 let name = (city.placemark.locality ?? "") + ", " + (city.placemark.country ?? "")
@@ -28,7 +31,7 @@ class AddCityWorker {
                 listCities.append(name)
             }
             listCities = Array(Set(listCities))
-            success(AddCity.FetchCities.Response.init(cities: listCities))
+            success(AddCity.FetchCities.Response(cities: listCities))
         }
     }
 }

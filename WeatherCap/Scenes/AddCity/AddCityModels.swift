@@ -14,7 +14,8 @@ enum AddCity {
             var name: String
         }
         struct Response {
-            var cities: [String]
+            var cities: [String]?
+            var errorDescription: String?
         }
         struct ViewModel {
             var cities: [String]

@@ -12,7 +12,9 @@ typealias FetchCityResponseHandler = (_ response: WeatherModel.FetchCity.Respons
 
 class WeatherWorker {
 
-    func fetchCity(coordinate: CLLocationCoordinate2D, success: @escaping(FetchCityResponseHandler), fail: @escaping(FetchCityResponseHandler)) {
+    func fetchCity(coordinate: CLLocationCoordinate2D,
+                   success: @escaping(FetchCityResponseHandler),
+                   fail: @escaping(FetchCityResponseHandler)) {
         guard let apiUrl = Bundle.main.infoDictionary?["API_URL"] as? String,
             let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String,
             let apiLang = Bundle.main.infoDictionary?["API_LANG"] as? String

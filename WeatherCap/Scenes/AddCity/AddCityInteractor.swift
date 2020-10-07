@@ -26,12 +26,12 @@ class AddCityInteractor: AddCityBusinessLogic, AddCityDataStore {
 
     func fetchCities(request: AddCity.FetchCities.Request) {
         worker.fetchCities(request: request, success: { response in
-            if response.cities.count != 0 {
-                self.cities = response.cities
+            if let cities = response.cities {
+                self.cities = cities
                 self.presenter?.presentCities(response: response)
             }
         }, fail: { response in
-
+            print(response.errorDescription)
         })
     }
 }

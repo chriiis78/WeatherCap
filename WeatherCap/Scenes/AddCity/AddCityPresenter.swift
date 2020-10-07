@@ -16,7 +16,9 @@ class AddCityPresenter: AddCityPresentationLogic {
     weak var viewController: AddCityDisplayLogic?
 
     func presentCities(response: AddCity.FetchCities.Response) {
-        let viewModel = AddCity.FetchCities.ViewModel(cities: response.cities)
-        viewController?.displayCities(viewModel: viewModel)
+        if let cities = response.cities {
+            let viewModel = AddCity.FetchCities.ViewModel(cities: cities)
+            viewController?.displayCities(viewModel: viewModel)
+        }
     }
 }
