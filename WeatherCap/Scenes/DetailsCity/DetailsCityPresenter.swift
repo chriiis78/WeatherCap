@@ -22,7 +22,7 @@ class DetailsCityPresenter: DetailsCityPresentationLogic {
             cityName: response.cityName,
             temp: "\(Int(response.weather.current?.temp ?? 0.0))°",
             weatherDescription: response.weather.current?.weather?.first?.weatherDescription ?? "",
-            icon: nil)
+            icon: UIImage(imageLiteralResourceName: response.weather.current?.weather?.first?.icon ?? ""))
         viewController?.displayWeather(viewModel: viewModel)
     }
 }

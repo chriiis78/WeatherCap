@@ -79,5 +79,6 @@ class DetailsCityViewController: UIViewController, DetailsCityDisplayLogic {
         cityNameLabel.text = viewModel.cityName
         weatherTempLabel.text = viewModel.temp
         weatherDescriptionLabel.text = viewModel.weatherDescription
+        weatherImage.image = viewModel.icon
     }
 }
