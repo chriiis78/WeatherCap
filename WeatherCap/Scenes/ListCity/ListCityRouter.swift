@@ -65,7 +65,6 @@ class ListCityRouter: NSObject, ListCityRoutingLogic, ListCityDataPassing {
 
     func passDataToDetailsCity(source: ListCityDataStore, destination: inout DetailsCityDataStore) {
         if let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row {
-            print("selectedRow ", selectedRow)
             destination.city = source.cities[selectedRow]
         }
     }

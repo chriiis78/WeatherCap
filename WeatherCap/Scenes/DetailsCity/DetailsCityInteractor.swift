@@ -22,41 +22,28 @@ class DetailsCityInteractor: DetailsCityBusinessLogic, DetailsCityDataStore {
     var city: String = ""
     var weather = Weather()
     var presenter: DetailsCityPresentationLogic?
-    var worker = WeatherWorker()
-    //var name: String = ""
+    var weatherWorker = WeatherWorker()
+    var worker = DetailsCityWorker()
 
-    let geocoder = CLGeocoder()
-
-    // MARK: Do something
+    // MARK: Fetch weather
 
     func fetchWeather(request: DetailsCity.FetchWeather.Request) {
-        getCoordinates(success: { coordinate in
-            print("getcoordinates success")
-            self.worker.fetchCity(coordinate: coordinate) { response in
-                if let weather = response.weather {
-                    self.weather = weather
+        worker.getCoordinate(request: DetailsCity.GetCoordinate.Request(city: city), success: { response in
+            if let coordinate = response.coordinate {
+                self.weatherWorker.fetchCity(coordinate: coordinate) { response in
+                    if let weather = response.weather {
+                        self.weather = weather
+                    }
+                    self.presenter?.presentWeather(
+                        response: DetailsCity.FetchWeather.Response(
+                            cityName: self.city,
+                            weather: self.weather))
+                } fail: { response in
+                    print(response.errorMessage)
                 }
-                self.presenter?.presentWeather(
-                    response: DetailsCity.FetchWeather.Response(
-                        cityName: self.city,
-                        weather: self.weather))
-            } fail: { response in
-                print(response.errorMessage)
             }
-        }, fail: { error in
-            print(error)
+        }, fail: { response in
+            print(response.errorDescription)
         })
-    }
-
-    func getCoordinates(success: @escaping (CLLocationCoordinate2D) -> Void,
-                        fail: @escaping (Error) -> Void) {
-        geocoder.geocodeAddressString(city) { (placemark, error) in
-            if let error = error {
-                fail(error)
-            }
-            if let coordinate = placemark?.first?.location?.coordinate {
-                success(coordinate)
-            }
-        }
     }
 }

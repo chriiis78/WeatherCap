@@ -20,7 +20,7 @@ class AddCityWorker {
             guard let items = searchResponse?.mapItems else {
                 return
             }
-            print(items.count)
+            
             var listCities: [String] = []
             for city in items {
                 let name = (city.placemark.locality ?? "") + ", " + (city.placemark.country ?? "")

@@ -15,8 +15,6 @@ protocol ListCityPresentationLogic {
 class ListCityPresenter: ListCityPresentationLogic {
     weak var viewController: ListCityDisplayLogic?
 
-    // MARK: Do something
-
     func presentCities(response: ListCity.GetCities.Response) {
         let viewModel = ListCity.GetCities.ViewModel(cities: response.cities)
         viewController?.displayCities(viewModel: viewModel)

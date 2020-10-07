@@ -15,8 +15,6 @@ protocol DetailsCityPresentationLogic {
 class DetailsCityPresenter: DetailsCityPresentationLogic {
     weak var viewController: DetailsCityDisplayLogic?
 
-    // MARK: Do something
-
     func presentWeather(response: DetailsCity.FetchWeather.Response) {
         let viewModel = DetailsCity.FetchWeather.ViewModel(
             cityName: response.cityName,

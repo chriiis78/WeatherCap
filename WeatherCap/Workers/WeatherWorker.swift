@@ -17,7 +17,6 @@ class WeatherWorker {
             let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String,
             let apiLang = Bundle.main.infoDictionary?["API_LANG"] as? String
             else {
-                print("error get API parameters")
                 fail(WeatherModel.FetchCity.Response(errorMessage: "error get API parameters"))
                 return
         }

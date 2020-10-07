@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
 enum DetailsCity {
-    // MARK: Use cases
-
     enum FetchWeather {
         struct Request {
         }
@@ -23,6 +22,16 @@ enum DetailsCity {
             var temp: String
             var weatherDescription: String
             var icon: UIImage?
+        }
+    }
+
+    enum GetCoordinate {
+        struct Request {
+            var city: String
+        }
+        struct Response {
+            var coordinate: CLLocationCoordinate2D?
+            var errorDescription: String?
         }
     }
 }

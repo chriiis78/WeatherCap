@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 protocol ListCityDisplayLogic: class {
     func displayCities(viewModel: ListCity.GetCities.ViewModel)
@@ -65,9 +64,7 @@ class ListCityViewController: UITableViewController, ListCityDisplayLogic {
         getCities()
     }
 
-    // MARK: Do something
-
-    //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: List Cities
 
     func getCities() {
         let request = ListCity.GetCities.Request()

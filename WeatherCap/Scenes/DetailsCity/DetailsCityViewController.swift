@@ -65,9 +65,7 @@ class DetailsCityViewController: UIViewController, DetailsCityDisplayLogic {
         fetchWeather()
     }
 
-    // MARK: Do something
-
-    //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: Details City
 
     func fetchWeather() {
         cityNameLabel.text = ""

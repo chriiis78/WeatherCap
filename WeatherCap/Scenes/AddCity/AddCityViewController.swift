@@ -12,7 +12,7 @@ protocol AddCityDisplayLogic: class {
     func displayCities(viewModel: AddCity.FetchCities.ViewModel)
 }
 
-class AddCityViewController: UITableViewController, UISearchBarDelegate, AddCityDisplayLogic {
+class AddCityViewController: UITableViewController, AddCityDisplayLogic {
 
     var interactor: AddCityBusinessLogic?
     var router: (NSObjectProtocol & AddCityRoutingLogic & AddCityDataPassing)?
@@ -57,8 +57,6 @@ class AddCityViewController: UITableViewController, UISearchBarDelegate, AddCity
 
     // MARK: View lifecycle
 
-//    @IBOutlet weak var navigationBar: UINavigationBar!
-//    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var searchBar: UISearchBar!
 
     var listCities: [String] = []
@@ -73,9 +71,7 @@ class AddCityViewController: UITableViewController, UISearchBarDelegate, AddCity
         searchBar.becomeFirstResponder()
     }
 
-    // MARK: Do something
-
-    //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: Add city
 
     func fetchCities() {
         if let text = searchBar.text {
@@ -88,7 +84,7 @@ class AddCityViewController: UITableViewController, UISearchBarDelegate, AddCity
         self.listCities = viewModel.cities
     }
 
-    // MARK: UITableView
+    // MARK: TableView
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -107,6 +103,11 @@ class AddCityViewController: UITableViewController, UISearchBarDelegate, AddCity
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         router?.routeToParent(segue: nil)
     }
+}
+
+extension AddCityViewController: UISearchBarDelegate {
+
+    // MARK: SearchBar
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         fetchCities()

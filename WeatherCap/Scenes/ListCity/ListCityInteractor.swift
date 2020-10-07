@@ -22,12 +22,12 @@ class ListCityInteractor: ListCityBusinessLogic, ListCityDataStore {
             cities = Array(Set(cities))
             self.presenter?.presentCities(response: ListCity.GetCities.Response(cities: cities))
             updateData()
-    }}
+        }
+    }
     var presenter: ListCityPresentationLogic?
     var dataWorker = DataWorker()
-    //var name: String = ""
 
-    // MARK: Do something
+    // MARK: Get cities
 
     func getCities(request: ListCity.GetCities.Request) {
         dataWorker.getCities { response in

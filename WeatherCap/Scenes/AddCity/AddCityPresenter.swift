@@ -15,8 +15,6 @@ protocol AddCityPresentationLogic {
 class AddCityPresenter: AddCityPresentationLogic {
     weak var viewController: AddCityDisplayLogic?
 
-    // MARK: Do something
-
     func presentCities(response: AddCity.FetchCities.Response) {
         let viewModel = AddCity.FetchCities.ViewModel(cities: response.cities)
         viewController?.displayCities(viewModel: viewModel)

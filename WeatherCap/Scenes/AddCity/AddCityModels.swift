@@ -9,8 +9,6 @@
 import UIKit
 
 enum AddCity {
-    // MARK: Use cases
-
     enum FetchCities {
         struct Request {
             var name: String

@@ -45,7 +45,6 @@ class AddCityRouter: NSObject, AddCityRoutingLogic, AddCityDataPassing {
     func passDataToParent(source: AddCityDataStore, destination: inout ListCityDataStore) {
         // Pass data backward
         if let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row {
-            print("selectedRow ", selectedRow)
             destination.cities.append(source.cities[selectedRow])
         }
     }
