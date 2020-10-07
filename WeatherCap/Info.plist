@@ -43,5 +43,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>API_URL</key>
+	<string>https://api.openweathermap.org/data/2.5/onecall</string>
+	<key>API_KEY</key>
+	<string>ab4ec97922530bc9f0dd33517d2d433b</string>
+	<key>API_LANG</key>
+	<string>fr</string>
 </dict>
 </plist>
